@@ -1,0 +1,19 @@
+{
+  "name": "uitop-test-task",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "scripts": {
+    "prod": "concurrently --raw -n 'api,web', -c '#007755,#2f6da3', 'cd apps/backend && bun dev' 'cd apps/frontend && bun start'",
+    "web:build": "cd apps/frontend && bun run build",
+    "web:dev": "cd apps/frontend && bun dev",
+    "api:dev": "cd apps/backend && bun dev",
+    "dev": "concurrently --raw -n 'api,web', -c '#007755,#2f6da3', 'cd apps/backend && bun dev' 'cd apps/frontend && bun dev'",
+    "db:push": "cd apps/backend && bunx prisma db push"
+  }
+}
