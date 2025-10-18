@@ -15,7 +15,7 @@ const app = express();
 app.use(
   cors({
     methods: ["GET", "POST", "PATCH", "DELETE"],
-    origin: "http://local.io",
+    origin: process.env.ALLOWED_ORIGIN,
   }),
 );
 
